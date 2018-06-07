@@ -2,16 +2,16 @@
 
 package = "cgilua"
 
-version = "5.1.2-2"
+version = "5.1.3-1"
 
 -- LuaDist source
 source = {
-  tag = "5.1.2-2",
+  tag = "5.1.3-1",
   url = "git://github.com/LuaDist-testing/cgilua.git"
 }
 -- Original source
 -- source = {
---    url = "http://luaforge.net/frs/download.php/3398/cgilua-5.1.2.tar.gz"
+--    url = "http://luaforge.net/frs/download.php/3970/cgilua-5.1.3.tar.gz"
 -- }
 
 description = {
@@ -31,11 +31,27 @@ dependencies = {
    "luafilesystem >= 1.4.1",
 }
 
+local CGILUA_LUAS = { "src/cgilua/authentication.lua", 
+      "src/cgilua/cookies.lua", 
+      "src/cgilua/dispatcher.lua", 
+      "src/cgilua/loader.lua", 
+      "src/cgilua/lp.lua", 
+      "src/cgilua/mime.lua", 
+      "src/cgilua/post.lua", 
+      "src/cgilua/readuntil.lua", 
+      "src/cgilua/serialize.lua", 
+      "src/cgilua/session.lua", 
+      "src/cgilua/urlcode.lua" }
+
 build = {
-   type = "make",
-   build_pass = false,
-   install_target = "install",
-   install_variables = {
-      LUA_DIR = "$(LUADIR)"
+   type = "module",
+   modules = {
+     cgilua = "src/cgilua/cgilua.lua"
    }
 }
+
+for i = 1, #CGILUA_LUAS do
+    local file = CGILUA_LUAS[i]
+    local mod = "cgilua." .. file:match("^src/cgilua/([^%.]+)%.lua$")
+    build.modules[mod] = file
+end

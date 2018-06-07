@@ -1,6 +1,6 @@
 package = "CGILua"
 
-version = "5.1.2-1"
+version = "5.1.2-2"
 
 source = {
    url = "http://luaforge.net/frs/download.php/3398/cgilua-5.1.2.tar.gz"
