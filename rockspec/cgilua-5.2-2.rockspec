@@ -1,6 +1,11 @@
 package = "CGILua"
 
-version = "cvs-4"
+version = "5.2-2"
+
+source = {
+   url = "https://github.com/keplerproject/cgilua/archive/v5.2a2.tar.gz",
+   dir = "cgilua-5.2a2",
+}
 
 description = {
    summary = "Tool for creating dynamic Web pages and manipulating data from Web forms",
@@ -11,16 +16,14 @@ description = {
       server, with different launchers. A launcher is responsible for the
       interaction of CGILua and the Web server, for example using ISAPI on
       IIS or mod_lua on Apache. 
-   ]]
+   ]],
+   homepage = "http://keplerproject.github.com/cgilua",
+   license = "MIT/X11",
 }
 
 dependencies = {
-   "lua >= 5.1",
-   "luafilesystem >= 1.5.0",
-}
-
-source = {
-   url = "git://github.com/keplerproject/cgilua.git",
+   "lua >= 5.2",
+   "luafilesystem >= 1.6.0",
 }
 
 local CGILUA_LUAS = { "src/cgilua/authentication.lua", 
@@ -36,12 +39,12 @@ local CGILUA_LUAS = { "src/cgilua/authentication.lua",
       "src/cgilua/urlcode.lua" }
 
 build = {
-   type = "module",
+   type = "builtin",
    modules = {
      cgilua = "src/cgilua/cgilua.lua"
    },
-   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } },
-   copy_directories = { "examples", "doc" }
+   copy_directories = { "examples", "doc", "tests" },
+   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } }
 }
 
 for i = 1, #CGILUA_LUAS do

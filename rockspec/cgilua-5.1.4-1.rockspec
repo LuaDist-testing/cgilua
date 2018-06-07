@@ -36,10 +36,12 @@ local CGILUA_LUAS = { "src/cgilua/authentication.lua",
       "src/cgilua/urlcode.lua" }
 
 build = {
-   type = "module",
+   type = "builtin",
    modules = {
      cgilua = "src/cgilua/cgilua.lua"
-   }
+   },
+   copy_directories = { "examples", "doc", "tests" },
+   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } }
 }
 
 for i = 1, #CGILUA_LUAS do

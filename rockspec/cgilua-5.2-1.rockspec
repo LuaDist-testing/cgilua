@@ -1,6 +1,10 @@
 package = "CGILua"
 
-version = "cvs-4"
+version = "5.2-1"
+
+source = {
+   url = "http://github.com/downloads/keplerproject/cgilua/cgilua-5.2.tar.gz"
+}
 
 description = {
    summary = "Tool for creating dynamic Web pages and manipulating data from Web forms",
@@ -15,12 +19,8 @@ description = {
 }
 
 dependencies = {
-   "lua >= 5.1",
-   "luafilesystem >= 1.5.0",
-}
-
-source = {
-   url = "git://github.com/keplerproject/cgilua.git",
+   "lua >= 5.2",
+   "luafilesystem >= 1.6.0",
 }
 
 local CGILUA_LUAS = { "src/cgilua/authentication.lua", 
@@ -36,12 +36,12 @@ local CGILUA_LUAS = { "src/cgilua/authentication.lua",
       "src/cgilua/urlcode.lua" }
 
 build = {
-   type = "module",
+   type = "builtin",
    modules = {
      cgilua = "src/cgilua/cgilua.lua"
    },
-   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } },
-   copy_directories = { "examples", "doc" }
+   copy_directories = { "examples", "doc", "tests" },
+   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } }
 }
 
 for i = 1, #CGILUA_LUAS do
