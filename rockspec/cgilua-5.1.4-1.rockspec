@@ -1,18 +1,10 @@
--- This file was automatically generated for the LuaDist project.
+package = "CGILua"
 
-package = "cgilua"
+version = "5.1.4-1"
 
-version = "5.1.3-1"
-
--- LuaDist source
 source = {
-  tag = "5.1.3-1",
-  url = "git://github.com/LuaDist-testing/cgilua.git"
+   url = "http://github.com/downloads/keplerproject/cgilua/cgilua-5.1.4.tar.gz"
 }
--- Original source
--- source = {
---    url = "http://luaforge.net/frs/download.php/3970/cgilua-5.1.3.tar.gz"
--- }
 
 description = {
    summary = "Tool for creating dynamic Web pages and manipulating data from Web forms",
@@ -28,7 +20,7 @@ description = {
 
 dependencies = {
    "lua >= 5.1",
-   "luafilesystem >= 1.4.1",
+   "luafilesystem >= 1.5.0",
 }
 
 local CGILUA_LUAS = { "src/cgilua/authentication.lua", 

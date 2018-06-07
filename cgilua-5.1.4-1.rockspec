@@ -1,6 +1,18 @@
-package = "CGILua"
+-- This file was automatically generated for the LuaDist project.
 
-version = "cvs-4"
+package = "cgilua"
+
+version = "5.1.4-1"
+
+-- LuaDist source
+source = {
+  tag = "5.1.4-1",
+  url = "git://github.com/LuaDist-testing/cgilua.git"
+}
+-- Original source
+-- source = {
+--    url = "http://github.com/downloads/keplerproject/cgilua/cgilua-5.1.4.tar.gz"
+-- }
 
 description = {
    summary = "Tool for creating dynamic Web pages and manipulating data from Web forms",
@@ -19,10 +31,6 @@ dependencies = {
    "luafilesystem >= 1.5.0",
 }
 
-source = {
-   url = "git://github.com/keplerproject/cgilua.git",
-}
-
 local CGILUA_LUAS = { "src/cgilua/authentication.lua", 
       "src/cgilua/cookies.lua", 
       "src/cgilua/dispatcher.lua", 
@@ -36,12 +44,12 @@ local CGILUA_LUAS = { "src/cgilua/authentication.lua",
       "src/cgilua/urlcode.lua" }
 
 build = {
-   type = "module",
+   type = "builtin",
    modules = {
      cgilua = "src/cgilua/cgilua.lua"
    },
-   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } },
-   copy_directories = { "examples" }
+   copy_directories = { "examples", "doc", "tests" },
+   install = { bin = { "src/launchers/cgilua.cgi", "src/launchers/cgilua.fcgi" } }
 }
 
 for i = 1, #CGILUA_LUAS do
